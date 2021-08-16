@@ -1,2 +1,2 @@
-# Andrew-s-Password-Generator
+# Andrews-Password-Generator
 Password generator for Homework 3
