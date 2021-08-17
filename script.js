@@ -7,7 +7,7 @@
 //you're going to need loops and arrays / strings and indexing to make it work according to theo conditionals too
 
 
-var length = [8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128]
+
 var alphaLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 var alphaUpper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -21,15 +21,15 @@ var generateBtn = document.querySelector("#generate");
 // Write password to the #password input
 function writePassword() {
 
-
-
 var passwordLength = window.prompt("Choose a password length of 8-128.");
+console.log(passwordLength);
 
 if (!passwordLength) {
   return;
 }
 
 if (passwordLength <= 128 && passwordLength >= 8){
+  
   characterSelect()
 
 } else if (
@@ -52,75 +52,67 @@ writePassword();
   function characterSelect() { 
 
   var alphabetLower = window.confirm("Do you want to use lowercase characters for this password?");
+  console.log(alphabetLower);
 
-  // if (!alphabetLower) {
-  //   return;
-  // }
 
-  function storeLower() { 
+  // function storeLower() { 
     
-    if (alphabetLower == true) {
-      var alphabetLower = true
+  //   if (alphabetLower == true) {
+  //     var alphabetLower = true
 
-    } else if (
-      alphabetLower == false) {
-      var alphabetLower = false
-    }
+  //   } else if (
+  //     alphabetLower == false) {
+  //     var alphabetLower = false
+  //   }
 
-  } 
+  // } 
 
   var alphabetUpper = window.confirm("Do you want to use uppercase characters for this password?");
+  console.log(alphabetUpper);
 
-        // if (!alphabetUpper) {
-        //   return;
-        // }
       
-        function storeUpper() { 
+        // function storeUpper() { 
         
-          if (alphabetUpper == true) {
-            var alphabetUpper = true
+        //   if (alphabetUpper == true) {
+        //     var alphabetUpper = true
       
-          } else if (
-            alphabetUpper == false) {
-            var alphabetUpper = false
-          } 
-        }  
+        //   } else if (
+        //     alphabetUpper == false) {
+        //     var alphabetUpper = false
+        //   } 
+        // }  
 
   var numeric = window.confirm("Do you want to use numbers for this password?");
+  console.log(numeric);
           
-        // if (!numeric) {
-        //   return;
-        // }
-
-          function storeNumeric() { 
+      
+          // function storeNumeric() { 
               
-            if (numeric == true) {
-              var numeric = true
+          //   if (numeric == true) {
+          //     var numeric = true
 
-            } else if (
-              numeric == false) {
-              var numeric = false
-            }
+          //   } else if (
+          //     numeric == false) {
+          //     var numeric = false
+          //   }
 
-          } 
+          // } 
 
   var characters = window.confirm("Do you want to use special characters for this password?");
+  console.log(characters);
           
-          // if (!characters) {
-          // return;
-          // }
-      
-            function storeCharacters() { 
+          
+          //   function storeCharacters() { 
               
-            if (characters == true) {
-              var characters = true
+          //   if (characters == true) {
+          //     var characters = true
 
-            } else if (
-              characters == false) {
-              var characters = false
-            }
+          //   } else if (
+          //     characters == false) {
+          //     var characters = false
+          //   }
 
-          } 
+          // } 
 
 
           if (
@@ -128,47 +120,177 @@ writePassword();
             alphabetLower == false &&
             numeric == false &&
             characters == false) {
-              window.alert ("You must select at least one password alphanumeric criteria.")
+              window.alert ("You must select at least one of four password criteria.")
               characterSelect()
 
             } else {
-
             generate() 
             }
+ 
+
+            function generate(){
+              var passwordKey = ((passwordLength) / ((alphabetLower) + (alphabetUpper) + (numeric) + (characters)));
+              console.log (passwordLength);
+              console.log(alphabetLower + alphabetUpper + numeric + characters);
+              console.log(passwordKey);
+
+              if ((passwordKey) % (1 != 0) == true) {
+                console.log((passwordKey) % (1 != 0)); 
+                passwordKey = Math.round(passwordKey) 
+                console.log(Math.round(passwordKey));
+
+              } else {
+                continueOn()
+              }
+               // (passwordKey) % (1 != 0) == false){
+                // passwordKey     
+
+                // }
+                
+      
+            
+
+            function continueOn() {
+            if (alphabetLower == true) {
+              var randomItem = ((passwordKey)*(alphaLower[Math.floor(Math.random()*alphaLower.length)]));
+              console.log (randomItem);
+
+              
+
+              var lcPWsegment = ((randomItem) * (passwordKey))
+              console.log(lcPWsegment);
+
+
+
+              // lowercasePW = (Math.floor(Math.random()) * alphabetLower.length);
+              //             console.log(lowercasePW);
+
+
+            // } else if (alphabetUpper == true) 
+
+
+
+                
 
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            }
+          
+          }           
+
+            
+
+            // function generate(alphabetLower) {
+  }
+            //   return (alphabetLower ? "1" : "0")
+}         //   if (alphabetLower == 1){
+            //     var lower = alphabetLower * userPWlength 
+                
+            //   } else if (
+            //     alphabetLower == 0)
+            //     var lower = alphabetLower * userPWlength
+
+            //   }
+
+           
+
+            
+            // function generate(alphabetUpper) {
+
+            //   return (alphabetUpper ? "1" : "0")
+            //   if (alphabetUpper == 1){
+            //     var upper = alphabetUpper * userPWlength 
+
+            //   }
+
+            // }
+
+
+            // function generate(numeric) {
+
+            //   return (numeric ? "1" : "0")
+            //   if (numeric == 1){
+            //     var nummer = numeric * userPWlength 
+
+            //   }
+
+            // }
+
+            // function generate(characters) {
+
+            //   return (characters ? "1" : "0")
+            //   if (characters == 1){
+            //     var chars = characters * userPWlength 
+
+            //   }
+
+            // }
+
+
+            // upper + lower + nummer + chars = x
 
 
 
  
 
 
-  }
+
+
+
+
+
+
+
+
+
+  
 
 
 var password = generatePassword();
 var passwordText = document.querySelector("#password");
-
-
-
-
-
-
-
-
-
+ 
 passwordText.value = password;  
 
 
 
-}
+
 // Add event listener to generate button
 
+
+
+
+
+
+
+
+
+
+}
 generateBtn.addEventListener("click", writePassword);
+
+
+
+
+
+
+
 
 
 
