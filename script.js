@@ -68,7 +68,7 @@ function writePassword() {
     return;
   }
 
-  function storeLower() { 
+  function storeLower() { //I would just repeat this method for the rest of the yes/no questions and eventually have a combination of different booleans to use 
     
     if (alphabetLower == true) {
       var alphabetLower = true
