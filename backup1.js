@@ -68,54 +68,44 @@ function writePassword() {
     return;
   }
 
-  function storeLower() { 
+  if ((alphabetLower == true)  || (alphabetLower == false )) {
     
-    if (alphabetLower == true) {
-      var alphabetLower = true
+    var alphabetUpper = window.confirm("Do you want to use uppercase characters for this password?");
 
-    } else if (
-      alphabetLower == false) {
-      var alphabetLower = false
+    if (!alphabetUpper) {
+      return;
+    }
+  }
+    if ((alphabetUpper == true) || (alphabetUpper == false )) {
+
+      var numeric = window.confirm("Do you want to use numbers for this password?");
+      
+      if (!numeric) {
+        return;
+      }
+    }
+      if ((numeric == true) || (numeric == false )) {
+
+      var characters = window.confirm("Do you want to use special characters for this password?");
+      
+        if (!characters) {
+         return;
+        }
+      }
+
+      if ((characters == true) || (characters == false )) {
+
+        generate()
+
     }
 
-  } 
 
-    // var alphabetUpper = window.confirm("Do you want to use uppercase characters for this password?");
-
-    // if (!alphabetUpper) {
-    //   return;
-    // }
-  
-    // if ((alphabetUpper == true) || (alphabetUpper == false )) {
-
-    //   var numeric = window.confirm("Do you want to use numbers for this password?");
-      
-    //   if (!numeric) {
-    //     return;
-    //   }
-    // }
-    //   if ((numeric == true) || (numeric == false )) {
-
-    //   var characters = window.confirm("Do you want to use special characters for this password?");
-      
-    //     if (!characters) {
-    //      return;
-    //     }
-    //   }
-
-    //   if ((characters == true) || (characters == false )) {
-
-    //     generate()
-
-    // }
-
-
-    // function generate() {
+    function generate() {
 
 
 
 
-    // }
+    }
 
 
 

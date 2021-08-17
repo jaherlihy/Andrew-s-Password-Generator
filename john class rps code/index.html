@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, Paper, Scissors</title>
+</head>
+<body>
+    <script>
+        var gameChoices = ['r', 'p', 's'];
+        var wins = 0;
+        var losses = 0;
+        var ties = 0;
+        var isPlaying = true;
+
+        function startRound() {
+            // User choice
+            var userChoice = prompt("R, P, or S?");
+            var userChoiceLower = userChoice.toLowerCase();
+
+            // Computer choice
+            var randomIndex = Math.floor(Math.random() * gameChoices.length);
+            var computerChoice = gameChoices[randomIndex];
+
+            // TIE
+            if (userChoice === computerChoice) {
+                // increment ties
+                ties++;
+                // alert user of tie
+                alert("You tied with computer.");
+            }
+            // USER WINS
+            else if (
+                (userChoiceLower === "r" && computerChoice === "s") ||
+                (userChoiceLower === "s" && computerChoice === "p") ||
+                (userChoiceLower === "p" && computerChoice === "r")
+            ) {
+                // increment wins
+                wins++;
+                // alert user of win
+                alert("You won!")
+            }
+            // COMPUTER WINS
+            else {
+                // increment losses
+                losses++;
+                // alert user of loss
+                alert("You lost!");
+            }
+
+            alert(
+                "Stats:\nWins: " + wins + "\nLosses: " + losses + "\nTies: " + ties
+            );
+
+            isPlaying = confirm("Would you like to play another round?");
+        }
+
+        while (isPlaying) {
+            startRound();
+        }
+
+        alert("Thanks for playing!");
+    </script>
+</body>
+</html>
