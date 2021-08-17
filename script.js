@@ -1,19 +1,17 @@
-
-// THEN a password is generated that matches the selected criteria
 // WHEN the password is generated
 // THEN the password is either displayed in an alert or written to the page
 
 
 //you're going to need loops and arrays / strings and indexing to make it work according to theo conditionals too
 
-
+var passwordArray = []
 
 var alphaLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 var alphaUpper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 var specialChar = ["`", "~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "=", "+", "[", "{", "]", "}", "\\", "|", ";", ":", "'", "\"", ",", "<", ".", ">", "/", "?"]
 
-
+var bigArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z","A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",0, 1, 2, 3, 4, 5, 6, 7, 8, 9,"`", "~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "=", "+", "[", "{", "]", "}", "\\", "|", ";", ":", "'", "\"", ",", "<", ".", ">", "/", "?"]
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
@@ -52,75 +50,44 @@ writePassword();
   function characterSelect() { 
 
   var alphabetLower = window.confirm("Do you want to use lowercase characters for this password?");
-  console.log(alphabetLower);
-
-
-  // function storeLower() { 
-    
-  //   if (alphabetLower == true) {
-  //     var alphabetLower = true
-
-  //   } else if (
-  //     alphabetLower == false) {
-  //     var alphabetLower = false
-  //   }
-
-  // } 
+  console.log(alphabetLower); 
+  
+  if (alphabetLower == true) {
+    var passwordArray = alphaLower.concat(passwordArray);
+    console.log(passwordArray);
+  }
 
   var alphabetUpper = window.confirm("Do you want to use uppercase characters for this password?");
   console.log(alphabetUpper);
 
-      
-        // function storeUpper() { 
-        
-        //   if (alphabetUpper == true) {
-        //     var alphabetUpper = true
-      
-        //   } else if (
-        //     alphabetUpper == false) {
-        //     var alphabetUpper = false
-        //   } 
-        // }  
+  if (alphabetUpper == true) {
+    var passwordArray = alphaUpper.concat(passwordArray);
+    console.log(passwordArray);
+  }
 
   var numeric = window.confirm("Do you want to use numbers for this password?");
   console.log(numeric);
           
-      
-          // function storeNumeric() { 
-              
-          //   if (numeric == true) {
-          //     var numeric = true
-
-          //   } else if (
-          //     numeric == false) {
-          //     var numeric = false
-          //   }
-
-          // } 
+  if (numeric == true) {
+    var passwordArray = numbers.concat(passwordArray);
+    console.log(passwordArray);
+  }
 
   var characters = window.confirm("Do you want to use special characters for this password?");
   console.log(characters);
           
-          
-          //   function storeCharacters() { 
-              
-          //   if (characters == true) {
-          //     var characters = true
-
-          //   } else if (
-          //     characters == false) {
-          //     var characters = false
-          //   }
-
-          // } 
-
+  if (characters == true) {
+    var passwordArray = specialChar.concat(passwordArray);
+    console.log(passwordArray);
+  }
+  
 
           if (
             alphabetUpper == false &&
             alphabetLower == false &&
             numeric == false &&
             characters == false) {
-              window.alert ("You must select at least one of four password criteria.")
+              window.alert ("You must select at least one of the four password criteria.")
               characterSelect()
 
             } else {
@@ -129,48 +96,62 @@ writePassword();
  
 
             function generate(){
-              var passwordKey = ((passwordLength) / ((alphabetLower) + (alphabetUpper) + (numeric) + (characters)));
-              console.log (passwordLength);
-              console.log(alphabetLower + alphabetUpper + numeric + characters);
-              console.log(passwordKey);
+              
+             var randomItem = (passwordArray[Math.floor(Math.random()*passwordArray.length)]);
+                  console.log (randomItem);
 
-              if ((passwordKey) % (1 != 0) == true) {
-                console.log((passwordKey) % (1 != 0)); 
-                passwordKey = Math.round(passwordKey) 
-                console.log(Math.round(passwordKey));
+                  function buildPassword(randomItem) {
+                    let randomPassword = 0;
+                    for (let i = 0; i < passwordArray.length; i++) {
+                      (passwordArray[Math.floor(Math.random()*passwordArray.length)])
 
-              } else {
-                continueOn()
-              }
-               // (passwordKey) % (1 != 0) == false){
-                // passwordKey     
 
-                // }
-                
-      
+                      
+                    }
+                    return randomPassword;
+                    console.log(randomPassword);
+                  }
+
+
+
+
+
+
+                  // if (selectObject.options[i].selected) {
+                  //   randomPassword++;
+                  // }
+
+
+
+
+
+
+
+              // let i = 0;
+              // do {
+              //   i += 1;
+              //   console.log(i);
+              // } while (i < passwordLength);
             
+              
+          //   function continueOn() {
+          //   if (alphabetLower == true) {
+          //     var randomItem = ((passwordKey)*(passwordArray[Math.floor(Math.random()*passwordArray.length)]));
+          //     console.log (randomItem);
+              
+              
+            
+             
 
-            function continueOn() {
-            if (alphabetLower == true) {
-              var randomItem = ((passwordKey)*(alphaLower[Math.floor(Math.random()*alphaLower.length)]));
-              console.log (randomItem);
+            
+            
+          //   }
 
+             
+
+          // }  
               
 
-              var lcPWsegment = ((randomItem) * (passwordKey))
-              console.log(lcPWsegment);
-
-
-
-              // lowercasePW = (Math.floor(Math.random()) * alphabetLower.length);
-              //             console.log(lowercasePW);
-
-
-            // } else if (alphabetUpper == true) 
-
-
-
-                
 
 
 
@@ -189,64 +170,16 @@ writePassword();
 
 
 
-
-
-            }
+            
           
-          }           
+                   
 
             
 
-            // function generate(alphabetLower) {
+          
   }
-            //   return (alphabetLower ? "1" : "0")
-}         //   if (alphabetLower == 1){
-            //     var lower = alphabetLower * userPWlength 
-                
-            //   } else if (
-            //     alphabetLower == 0)
-            //     var lower = alphabetLower * userPWlength
-
-            //   }
-
-           
-
             
-            // function generate(alphabetUpper) {
-
-            //   return (alphabetUpper ? "1" : "0")
-            //   if (alphabetUpper == 1){
-            //     var upper = alphabetUpper * userPWlength 
-
-            //   }
-
-            // }
-
-
-            // function generate(numeric) {
-
-            //   return (numeric ? "1" : "0")
-            //   if (numeric == 1){
-            //     var nummer = numeric * userPWlength 
-
-            //   }
-
-            // }
-
-            // function generate(characters) {
-
-            //   return (characters ? "1" : "0")
-            //   if (characters == 1){
-            //     var chars = characters * userPWlength 
-
-            //   }
-
-            // }
-
-
-            // upper + lower + nummer + chars = x
-
-
+}         
 
  
 
