@@ -1,17 +1,12 @@
-// WHEN the password is generated
-// THEN the password is either displayed in an alert or written to the page
-
 
 //you're going to need loops and arrays / strings and indexing to make it work according to theo conditionals too
 
-var passwordArray = []
+var passwordArray = [];
 
-var alphaLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-var alphaUpper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-var specialChar = ["`", "~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "=", "+", "[", "{", "]", "}", "\\", "|", ";", ":", "'", "\"", ",", "<", ".", ">", "/", "?"]
-
-var bigArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z","A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",0, 1, 2, 3, 4, 5, 6, 7, 8, 9,"`", "~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "=", "+", "[", "{", "]", "}", "\\", "|", ";", ":", "'", "\"", ",", "<", ".", ">", "/", "?"]
+var alphaLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var alphaUpper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+var specialChar = ["`", "~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "=", "+", "[", "{", "]", "}", "\\", "|", ";", ":", "'", "\"", ",", "<", ".", ">", "/", "?"];
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
@@ -46,7 +41,6 @@ writePassword();
     writePassword(); 
   }
 
-  
   function characterSelect() { 
 
   var alphabetLower = window.confirm("Do you want to use lowercase characters for this password?");
@@ -95,154 +89,59 @@ writePassword();
             }
  
 
-            function generate(){
-              
-             var randomItem = (passwordArray[Math.floor(Math.random()*passwordArray.length)]);
-                  console.log (randomItem);
-
-                  function buildPassword(randomItem) {
-                    let randomPassword = 0;
-                    for (let i = 0; i < passwordArray.length; i++) {
-                      (passwordArray[Math.floor(Math.random()*passwordArray.length)])
+            function generate(){        
+                    let randomPassword = "";
+                    for (let i = 0; i < passwordLength; i++){
+                      ((randomPassword) += passwordArray[Math.floor(Math.random()*passwordArray.length)])
+                       console.log(randomPassword.length);
+                       
+                        
 
 
-                      
+                    
                     }
+                    console.log("randomPassword", randomPassword); //I like to pass multiple things to a console.log() for clarity!
                     return randomPassword;
-                    console.log(randomPassword);
-                  }
-
-
-
-
-
-
-                  // if (selectObject.options[i].selected) {
-                  //   randomPassword++;
-                  // }
-
-
-
-
-
-
-
-              // let i = 0;
-              // do {
-              //   i += 1;
-              //   console.log(i);
-              // } while (i < passwordLength);
-            
-              
-          //   function continueOn() {
-          //   if (alphabetLower == true) {
-          //     var randomItem = ((passwordKey)*(passwordArray[Math.floor(Math.random()*passwordArray.length)]));
-          //     console.log (randomItem);
-              
-              
-            
-             
-
-            
-            
-          //   }
-
-             
-
-          // }  
-              
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
-          
                    
+                  
+            }
+
+
+                            function sayHiTo(name){
+                             var string = "Hello, "
+                             console.log(string + name)
+                            }
+
+                            sayHiTo("david") //this is a function call; it says "RUN THIS FUNCTION, PASS IT "david". hence, the name parameter becomes "david"
+
+
+                            function sayHiTo(name){
+                              var string = "Hello, "
+                              console.log(string + name)
+                            }
+
+                            sayHiTo("david") //prints "Hello, david"
+                            sayHiTo() //prints "Hello, undefined"
+                            sayHiTo(1) //prints "Hello, 1"
+
+
+
 
             
-
-          
-  }
-            
-}         
-
- 
-
-
-
-
-
-
-
-
-
-
-
+    //  You might've noticed these lines... which are there specifically to put something on the page.
+    //  password here takes on the value returned by the function generatePassword()... which you don't have. 
+    //  You can instead use the last two lines, and put in your password at the end passwordText.value.
+                          
   
-
+            
+  }         
 
 var password = generatePassword();
 var passwordText = document.querySelector("#password");
  
 passwordText.value = password;  
 
-
-
-
 // Add event listener to generate button
-
-
-
-
-
-
-
-
-
 
 }
 generateBtn.addEventListener("click", writePassword);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// var foo = [];
-// var foo = array.prototype.fill()
-
-// foo.length = 26;
-
-// foo.fill("A");
-
-
-// for (var i = 0; i < howeverLong; i++) {
-// 	//pick something random
-// 	foo.push(someRandomData);
-// }
