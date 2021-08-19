@@ -1,5 +1,5 @@
 
-//you're going to need loops and arrays / strings and indexing to make it work according to theo conditionals too
+
 
 var passwordArray = [];
 
@@ -48,6 +48,7 @@ writePassword();
   
   if (alphabetLower == true) {
     var passwordArray = alphaLower.concat(passwordArray);
+    var passwordArray = alphaLower.filter(x => x !== undefined);
     console.log(passwordArray);
   }
 
@@ -56,6 +57,7 @@ writePassword();
 
   if (alphabetUpper == true) {
     var passwordArray = alphaUpper.concat(passwordArray);
+    var passwordArray = alphaUpper.filter(x => x !== undefined);
     console.log(passwordArray);
   }
 
@@ -64,6 +66,7 @@ writePassword();
           
   if (numeric == true) {
     var passwordArray = numbers.concat(passwordArray);
+    
     console.log(passwordArray);
   }
 
@@ -72,57 +75,63 @@ writePassword();
           
   if (characters == true) {
     var passwordArray = specialChar.concat(passwordArray);
+    var passwordArray = specialChar.filter(x => x !== undefined);
     console.log(passwordArray);
   }
   
-
-          if (
-            alphabetUpper == false &&
-            alphabetLower == false &&
-            numeric == false &&
-            characters == false) {
-              window.alert ("You must select at least one of the four password criteria.")
-              characterSelect()
+  if (
+    alphabetUpper == false &&
+    alphabetLower == false &&
+    numeric == false &&
+    characters == false) {
+      window.alert ("You must select at least one of the four password criteria.")
+      characterSelect()
 
             } else {
             generate() 
             }
  
 
-            function generate(){        
-                    let randomPassword = "";
-                    for (let i = 0; i < passwordLength; i++){
-                      ((randomPassword) += passwordArray[Math.floor(Math.random()*passwordArray.length)])
-                       console.log(randomPassword.length);
-                       
-                        
+    function generate(){        
+      let randomPassword = "";
+      for (let i = 0; i < passwordLength; i++){
+      ((randomPassword) += passwordArray[Math.floor(Math.random()*passwordArray.length)])
+      console.log(randomPassword.length);
+               
+      }
+      console.log("randomPassword", randomPassword);
+      printPassword()
+      return randomPassword;
+
+    }
+
+    
+    function printPassword() {
+      var password = generate();
+      var passwordText = document.querySelector("#password");
+    
+      passwordText.value = password;
+    
+    }
+    
+    
+            
+                            // function sayHiTo(name){
+                            //  var string = "Hello, "
+                            //  console.log(string + name)
+                            // }
+
+                            // sayHiTo("david") //this is a function call; it says "RUN THIS FUNCTION, PASS IT "david". hence, the name parameter becomes "david"
 
 
-                    
-                    }
-                    console.log("randomPassword", randomPassword); //I like to pass multiple things to a console.log() for clarity!
-                    return randomPassword;
-                   
-                  
-            }
+                            // function sayHiTo(name){
+                            //   var string = "Hello, "
+                            //   console.log(string + name)
+                            // }
 
-
-                            function sayHiTo(name){
-                             var string = "Hello, "
-                             console.log(string + name)
-                            }
-
-                            sayHiTo("david") //this is a function call; it says "RUN THIS FUNCTION, PASS IT "david". hence, the name parameter becomes "david"
-
-
-                            function sayHiTo(name){
-                              var string = "Hello, "
-                              console.log(string + name)
-                            }
-
-                            sayHiTo("david") //prints "Hello, david"
-                            sayHiTo() //prints "Hello, undefined"
-                            sayHiTo(1) //prints "Hello, 1"
+                            // sayHiTo("david") //prints "Hello, david"
+                            // sayHiTo() //prints "Hello, undefined"
+                            // sayHiTo(1) //prints "Hello, 1"
 
 
 
@@ -136,10 +145,7 @@ writePassword();
             
   }         
 
-var password = generatePassword();
-var passwordText = document.querySelector("#password");
- 
-passwordText.value = password;  
+
 
 // Add event listener to generate button
 
