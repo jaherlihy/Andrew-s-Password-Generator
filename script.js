@@ -29,17 +29,17 @@ function generatePassword() {
 
   if ((passwordLength > 128) ) {
     window.alert ("That password length is too long.") 
-    passwordPrompts(); 
+    generatePassword(); 
   }
 
   if ((passwordLength < 8) || (passwordLength === null)) {
     window.alert ("That password length is too short."); 
-    passwordPrompts();
+    generatePassword();
   }
 
   if (isNaN(passwordLength) == true)  {
     window.alert ("Input must be a number."); 
-    passwordPrompts(); 
+    generatePassword(); 
   }
 
  
@@ -95,7 +95,7 @@ function generatePassword() {
     console.log("randomPassword: ",randomPassword, randomPassword.length)
 
     // window.alert(randomPassword);
-    writePassword();
+    // writePassword();
     return randomPassword;
     }
 
@@ -112,6 +112,6 @@ function writePassword() {
   
 }
 
-generateBtn.addEventListener("click", generatePassword);
+generateBtn.addEventListener("click", writePassword);
 
 
