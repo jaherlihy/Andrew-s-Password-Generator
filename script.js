@@ -1,82 +1,96 @@
 
 
 
-var passwordArray = [];
+// var passwordArray = [];
 
-var alphaLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var alphaUpper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-var specialChar = ["`", "~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "=", "+", "[", "{", "]", "}", "\\", "|", ";", ":", "'", "\"", ",", "<", ".", ">", "/", "?"];
+const alphaLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+const alphaUpper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+const specialChar = ["`", "~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "=", "+", "[", "{", "]", "}", "\\", "|", ";", ":", "'", "\"", ",", "<", ".", ">", "/", "?"];
+
+let alphaLowAmount = 0;
+let alphaUpAmount = 0;
+let numbersAmount = 0;
+let characterAmount = 0;
+
+let lengthDivisor = 0;
+// let remainder = passwordLength % lengthDivisor 
+// var remainderArray 
+
+let randomPassword = "";
+let filterPassword = "";
+
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+generateBtn.addEventListener("click", writePassword);
+
+
 // Write password to the #password input
 function writePassword() {
 
-var passwordLength = window.prompt("Choose a password length of 8-128.");
-console.log(passwordLength);
+  var passwordLength = window.prompt("Choose a password length of 8-128.");
+  console.log(passwordLength);
 
-if (!passwordLength) {
-  return;
-}
 
-if (passwordLength <= 128 && passwordLength >= 8){
-  
-  characterSelect()
+  if (passwordLength === null ) {
+    return;
+  }
 
-} else if (
-(passwordLength > 128) ) {
-window.alert ("That password length is too long.") 
-writePassword(); 
+  if ((passwordLength > 128) ) {
+    window.alert ("That password length is too long.") 
+    writePassword(); 
+  }
 
-} else if (
-  passwordLength < 8) {
-window.alert ("That password length is too short."); 
-writePassword();
+  if ((passwordLength < 8) || (passwordLength === null)) {
+    window.alert ("That password length is too short."); 
+    writePassword();
+  }
 
-} else if (
-  typeof(passwordLegnth) !== 'number') {
+  if (isNaN(passwordLength) == true)  {
     window.alert ("Input must be a number."); 
     writePassword(); 
   }
 
-  function characterSelect() { 
+ 
+
 
   var alphabetLower = window.confirm("Do you want to use lowercase characters for this password?");
-  console.log(alphabetLower); 
+  console.log("Do you want to use lowercase characters for this password? " + alphabetLower); 
   
-  if (alphabetLower == true) {
-    var passwordArray = alphaLower.concat(passwordArray);
-    var passwordArray = alphaLower.filter(x => x !== undefined);
-    console.log(passwordArray);
+  if (alphabetLower === true) {
+    lengthDivisor += 1;
+   
+    console.log("length divisor = " + lengthDivisor);
   }
+
 
   var alphabetUpper = window.confirm("Do you want to use uppercase characters for this password?");
-  console.log(alphabetUpper);
+  console.log("Do you want to use uppercase characters for this password? " + alphabetUpper);
 
-  if (alphabetUpper == true) {
-    var passwordArray = alphaUpper.concat(passwordArray);
-    var passwordArray = alphaUpper.filter(x => x !== undefined);
-    console.log(passwordArray);
+  if (alphabetUpper === true) {
+    lengthDivisor += 1;
+    
+    console.log("length divisor = " + lengthDivisor);
   }
 
+
   var numeric = window.confirm("Do you want to use numbers for this password?");
-  console.log(numeric);
+  console.log("Do you want to use numbers for this password? " + numeric);
           
-  if (numeric == true) {
-    var passwordArray = numbers.concat(passwordArray);
-    
-    console.log(passwordArray);
+  if (numeric === true) {
+    lengthDivisor += 1;
+    console.log("length divisor = " + lengthDivisor);
   }
 
   var characters = window.confirm("Do you want to use special characters for this password?");
-  console.log(characters);
+  console.log("Do you want to use special characters for this password? " + characters);
           
-  if (characters == true) {
-    var passwordArray = specialChar.concat(passwordArray);
-    var passwordArray = specialChar.filter(x => x !== undefined);
-    console.log(passwordArray);
+  if (characters === true) {
+    lengthDivisor += 1;
+    
+    console.log("length divisor = " + lengthDivisor);
   }
   
   if (
@@ -85,69 +99,152 @@ writePassword();
     numeric == false &&
     characters == false) {
       window.alert ("You must select at least one of the four password criteria.")
-      characterSelect()
+    } 
 
-            } else {
-            generate() 
-            }
+    if (passwordLength >= 8 && passwordLength <= 128 && isNaN(passwordLength) == false){
+      generatePassword()
+    }
+
+    function generatePassword () {
+
+    if (alphabetLower == true) {
+      // alphaLowAmount = (passwordLength / lengthDivisor);
+      alphaLowAmount += Math.floor(passwordLength / lengthDivisor);
+      // filterPassword = randomPassword.filter(x => x !== undefined);
+      console.log("lowercase alphabet characters amount to be used in PW: " + alphaLowAmount);
+
+    
+      for (let i = 0; i < alphaLowAmount; i++){
+        ((randomPassword) += alphaLower[Math.floor(Math.random()*alphaLower.length)]);
+        }
+      
+
+      // randomPassword = alphaLower.filter(x => x !== undefined);
+      console.log("randomPassword: ", randomPassword, randomPassword.length)
+    } 
+ 
+    if (alphabetUpper == true) {
+      // alphaUpAmount += (passwordLength / lengthDivisor);
+      alphaUpAmount += Math.floor(passwordLength / lengthDivisor);
+      // randomPassword.filter(x => x !== undefined);
+      console.log("uppercase alphabet characters amount to be used in PW: " + alphaUpAmount);
+
+      for (let i = 0; i < alphaLowAmount; i++){
+        ((randomPassword) += alphaUpper[Math.floor(Math.random()*alphaUpper.length)]);
+        }
+      console.log("randomPassword: ",randomPassword, randomPassword.length)
+    } 
+ 
+    if (numeric == true) {
+      // numbersAmount += (passwordLength / lengthDivisor);
+      numbersAmount += Math.floor(passwordLength / lengthDivisor);
+      console.log("numbers amount to be used in PW: " + numbersAmount);
+
+      for (let i = 0; i < numbersAmount; i++){
+        ((randomPassword) += numbers[Math.floor(Math.random()*numbers.length)]);
+        }
+      console.log("randomPassword: ",randomPassword, randomPassword.length)
+    } 
+
+    if (characters == true) {
+      // characterAmount += (passwordLength / lengthDivisor);
+      characterAmount += Math.floor(passwordLength / lengthDivisor);
+      // randomPassword = specialChar.filter(x => x !== undefined);
+      console.log("special characters amount to be used in PW: " + characterAmount);
+
+      for (let i = 0; i < characterAmount; i++){
+        ((randomPassword) += specialChar[Math.floor(Math.random()*specialChar.length)]);
+        }
+      console.log("randomPassword: ",randomPassword, randomPassword.length)
+    } 
+    
+
+    // const numbers = [1,-1, 2, 3];
+
+    // numbers.filter(function(value){
+    //   return value >= 0;
+    // });
+
+
+
+    // if (randomPassword.includes(undefined)); {
+
+    //   filterPassword = randomPassword.filter(x => x !== undefined);
+    //   console.log("filtered password: ", filterPassword);
+
+    // }
+
+
+
+
+
+
+
+
+
+
+
+
+   ((randomPassword.length) - (passwordLength))
+  console.log("(randomPassword.length) - passwordLength: "(randomPassword.length) - passwordLength);
+
+
+
+
+  }
+
+  
+
+
+
+    var randomPassword = generatePassword();
+    var passwordText = document.querySelector("#password");
+  
+    passwordText.value = randomPassword;
+  
+
+
+
+
+
+
+
+
+
+
+removeItems(numbers, 2);
+
+
+     randomPassword.splice(0,)
+
+
  
 
-    function generate(){        
-      let randomPassword = "";
-      for (let i = 0; i < passwordLength; i++){
-      ((randomPassword) += passwordArray[Math.floor(Math.random()*passwordArray.length)])
-      console.log(randomPassword.length);
-               
-      }
-      console.log("randomPassword", randomPassword);
-      printPassword()
-      return randomPassword;
 
-    }
+
+
+
+
+
+
+
+
+
+
+
+
 
     
-    function printPassword() {
-      var password = generate();
-      var passwordText = document.querySelector("#password");
-    
-      passwordText.value = password;
-    
-    }
-    
-    
-            
-                            // function sayHiTo(name){
-                            //  var string = "Hello, "
-                            //  console.log(string + name)
-                            // }
-
-                            // sayHiTo("david") //this is a function call; it says "RUN THIS FUNCTION, PASS IT "david". hence, the name parameter becomes "david"
-
-
-                            // function sayHiTo(name){
-                            //   var string = "Hello, "
-                            //   console.log(string + name)
-                            // }
-
-                            // sayHiTo("david") //prints "Hello, david"
-                            // sayHiTo() //prints "Hello, undefined"
-                            // sayHiTo(1) //prints "Hello, 1"
-
-
-
 
             
-    //  You might've noticed these lines... which are there specifically to put something on the page.
-    //  password here takes on the value returned by the function generatePassword()... which you don't have. 
-    //  You can instead use the last two lines, and put in your password at the end passwordText.value.
-                          
+}    
   
             
-  }         
+          
 
 
 
 // Add event listener to generate button
 
-}
+
 generateBtn.addEventListener("click", writePassword);
