@@ -20,4 +20,9 @@ var filteredstring = string.filter(function(x) {
 });
  
 console.log(filteredstring);
- 
+
+function checkEquality(first, second) {
+  if (first === second)
+  console.log("the values are strictly equal")
+
+}
