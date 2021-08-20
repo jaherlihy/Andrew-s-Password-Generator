@@ -3,10 +3,11 @@
 
 // var passwordArray = [];
 
-const alphaLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-const alphaUpper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-const specialChar = ["`", "~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "=", "+", "[", "{", "]", "}", "\\", "|", ";", ":", "'", "\"", ",", "<", ".", ">", "/", "?"];
+var alphaLower = "abcdefghijklmnopqrstuvwxyz";
+var alphaUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var numbers = "012345678901234567890123456789";
+var specialChar = "`~!@#$%^&*()-_=+[{]}\\|;:'\",<.>/?";
+
 
 let alphaLowAmount = 0;
 let alphaUpAmount = 0;
@@ -22,13 +23,10 @@ let filterPassword = "";
 
 
 // Assignment Code
-var generateBtn = document.querySelector("#generate");
-
-generateBtn.addEventListener("click", writePassword);
 
 
 // Write password to the #password input
-function writePassword() {
+function generatePassword() {
 
   var passwordLength = window.prompt("Choose a password length of 8-128.");
   console.log(passwordLength);
@@ -102,10 +100,10 @@ function writePassword() {
     } 
 
     if (passwordLength >= 8 && passwordLength <= 128 && isNaN(passwordLength) == false){
-      generatePassword()
-    }
+      
+   
 
-    function generatePassword () {
+    
 
     if (alphabetLower == true) {
       // alphaLowAmount = (passwordLength / lengthDivisor);
@@ -159,92 +157,31 @@ function writePassword() {
     } 
     
 
-    // const numbers = [1,-1, 2, 3];
-
-    // numbers.filter(function(value){
-    //   return value >= 0;
-    // });
-
-
-
-    // if (randomPassword.includes(undefined)); {
-
-    //   filterPassword = randomPassword.filter(x => x !== undefined);
-    //   console.log("filtered password: ", filterPassword);
-
-    // }
-
-
-
-
-
-
-
-
-
-
-
-
    ((randomPassword.length) - (passwordLength))
   console.log("(randomPassword.length) - passwordLength: "(randomPassword.length) - passwordLength);
-
-
-
-
   }
-
-  
-
-
-
-    var randomPassword = generatePassword();
-    var passwordText = document.querySelector("#password");
-  
-    passwordText.value = randomPassword;
-  
-
-
-
-
-
-
-
-
-
-
-removeItems(numbers, 2);
-
-
-     randomPassword.splice(0,)
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
             
 }    
   
             
-          
+          // Assignment Code
+var generateBtn = document.querySelector("#generate");
+
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+
+}
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
+
 
 
 
 // Add event listener to generate button
 
 
-generateBtn.addEventListener("click", writePassword);

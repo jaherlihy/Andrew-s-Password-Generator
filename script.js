@@ -1,4 +1,3 @@
-
 var alphaLower = "abcdefghijklmnopqrstuvwxyz";
 var alphaUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numbers = "012345678901234567890123456789";
@@ -8,20 +7,13 @@ var passwordLength = '';
 var passwordArray = '';
 var randomPassword = '';
 
-
-
 var generateBtn = document.querySelector("#generate");
-
-
-
 
 // Write password to the #password input
 function generatePassword() {
-
   //Password length prompt starts here 
   passwordLength = window.prompt("Choose a password length of 8-128.");
   console.log("passwordLength: ", passwordLength);
-
 
   if (passwordLength === null ) {
     return;
@@ -41,7 +33,6 @@ function generatePassword() {
     window.alert ("Input must be a number."); 
     generatePassword(); 
   }
-
  
 // 4 password criteria prompts start here
   var alphabetLower = window.confirm("Do you want to use lowercase characters for this password?");
@@ -52,7 +43,6 @@ function generatePassword() {
     console.log("passwordArray: ", passwordArray);    
   }
 
-
   var alphabetUpper = window.confirm("Do you want to use uppercase characters for this password?");
   console.log("Do you want to use uppercase characters for this password? " + alphabetUpper);
 
@@ -61,7 +51,6 @@ function generatePassword() {
    console.log("passwordArray: ", passwordArray);    
   }
 
-
   var numeric = window.confirm("Do you want to use numbers for this password?");
   console.log("Do you want to use numbers for this password? " + numeric);
           
@@ -69,7 +58,6 @@ function generatePassword() {
    passwordArray += numbers;
    console.log("passwordArray: ", passwordArray);    
   }
-
 
   var characters = window.confirm("Do you want to use special characters for this password?");
   console.log("Do you want to use special characters for this password? " + characters);
@@ -88,22 +76,16 @@ function generatePassword() {
     } 
 
     if (passwordLength >= 8 && passwordLength <= 128 && isNaN(passwordLength) == false){
-      
+    //Here is where the random password generation takes place
     for (let i = 0; i < passwordLength; i++){
       ((randomPassword) += passwordArray[Math.floor(Math.random()*passwordArray.length)]);
     }
     console.log("randomPassword: ",randomPassword, randomPassword.length)
 
-    // window.alert(randomPassword);
-    // writePassword();
     return randomPassword;
-    }
-
-    
+    }    
 }
-
-
-
+//password is writen to the browser window here
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
@@ -113,5 +95,3 @@ function writePassword() {
 }
 
 generateBtn.addEventListener("click", writePassword);
-
-
