@@ -8,6 +8,7 @@ The rest of the generator was mainly a series of IF statements taking into accou
 
 \*As I was typing this I remembered that the old password kept adding onto the newly generated password if you ran the generator more than once. I fixed it by having the last function set the random password variable back to an empty string and then ending the function with a return;.
 
-https://github.com/jaherlihy/Andrews-Password-Generator/raw/main/assets/images/Andrews-Password-Generator.png?raw=true
+
+![Password Gen screenshot](https://github.com/jaherlihy/Andrews-Password-Generator/raw/main/assets/images/Andrews-Password-Generator.png?raw=true)
 
 https://github.com/jaherlihy/Andrews-Password-Generator
