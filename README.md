@@ -1,2 +1,13 @@
 # Andrews-Password-Generator
-Password generator for Homework 3
+
+It was quite the journey arriving at the final version of this. I originally went with a design very similar to this one but never completely finished it. Then I got overly ambitious and wanted to write a pw generator that would pull equally (based on user input PW length) from 4 different strings of uppercase, lowercase, numbers, and special characters. This presented a number of problems. One of the biggest ones was dealing with remainders when dividing the password length by the chosen amount of criteria. I now have a solution for this that I may implement later so I can jazz it up for my portfolio. I was also getting undefined returned but that was because I was using arrays instead of strings. And finally the random selections for each criteria was being tacked on the password string so that it ended up looking like this asdjksDSADFM34748^-+%# though I think shuffle would fix this.
+
+As as a result of the above, and for the sake of time and my sanity, I went back to a more simple design. I went with the approach of add assigning a string for each password criteria based on user input. This created one big string that the generator would pull from randomly. I was concerned that there weren't enough numbers in the numerical string and that if the user selected a short password, and there were only numbers 1-10 in the big password string, that a number might not be included. I fixed this by repeating 1-10 in the string 2 more times. That way it was roughly the same length as the uppper and lower case alphabet and special characters. Those were all of the hurdles I encountered in my new, more simple design.
+
+The rest of the generator was mainly a series of IF statements taking into account various user input and making sure there were rules in place to prevent the user from inputting information that didn't meet the specifications of the assignment. I tried to provide a good user experience by giving specific explanations for the various incorrect inputs such as telling the if the chosen length is too long, short, or not a number. After that it all came down to a for loop iterating randomly through the password string based on the user selected length and the 1-4 criteria of lowercase alphabet, uppercase alphabet, numbers, and special symbols.
+
+\*As I was typing this I remembered that the old password kept adding onto the newly generated password if you ran the generator more than once. I fixed it by having the last function set the random password variable back to an empty string and then ending the function with a return;.
+
+https://github.com/jaherlihy/Andrews-Password-Generator/raw/main/assets/images/Password-gen.png?raw=true
+
+https://github.com/jaherlihy/Andrews-Password-Generator

@@ -4,15 +4,12 @@ var alphaLower = "abcdefghijklmnopqrstuvwxyz";
 var alphaUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numbers = "012345678901234567890123456789";
 var specialChar = "`~!@#$%^&*()-_=+[{]}\\|;:'\",<.>/?";
-
 //this is a blank value waitng for the user input PW length
 var passwordLength = '';
 //this has an empty value and is filled with 1-4 of the 4 strings at the top, based on what the user selects
 var passwordArray = '';
 //this variable is blank and is where the randomly generated PW is assigned
 var randomPassword = '';
-
-
 
 // Write password to the #password input
 function generatePassword() {
@@ -21,7 +18,7 @@ function generatePassword() {
   console.log("passwordLength: ", passwordLength);
 
   if (passwordLength === null ) {
-    return;
+    return generatePassword();
   }
 
   if ((passwordLength > 128) ) {
@@ -38,7 +35,6 @@ function generatePassword() {
     window.alert ("Input must be a number."); 
     generatePassword(); 
   }
- 
 // 4 password criteria prompts start here, it's more if statements that take user input in boolean form to add assign 1-4 of the arrays at the top into a new array that the random password will be generated from
   var alphabetLower = window.confirm("Do you want to use lowercase characters for this password?");
   console.log("Do you want to use lowercase characters for this password? " + alphabetLower); 
@@ -78,8 +74,8 @@ function generatePassword() {
     numeric == false &&
     characters == false) {
       window.alert ("You must select at least one of the four password criteria.")
+      return generatePassword();
     } 
-
 
     if (passwordLength >= 8 && passwordLength <= 128 && isNaN(passwordLength) == false){
     //Here is where the random password generation takes place
@@ -87,7 +83,6 @@ function generatePassword() {
       ((randomPassword) += passwordArray[Math.floor(Math.random()*passwordArray.length)]);
     }
     console.log("randomPassword: ",randomPassword, randomPassword.length)
-
     //this returns the randomly generated PW to the function variable generatePassword 
     return randomPassword;
     }    
@@ -100,9 +95,11 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
   //this makes the text value of the selected ID above fill with the randomly generated password 
   passwordText.value = password;
+  //this clears the information stored in the variables before restarting the PW generation process
+  randomPassword ="";
+  passwordArray ="";
   
 }
-
 //I placed both listeners here for ease of maintenance in attempt to observe good javascript practices, one wouldn't work when placed at the top of page which is why they're here at the bottom
 var generateBtn = document.querySelector("#generate");
 generateBtn.addEventListener("click", writePassword);
